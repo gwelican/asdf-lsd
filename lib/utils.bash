@@ -44,7 +44,7 @@ download_release() {
 
 	local platform
 	case "$OSTYPE" in
-		darwin*) platform="macos" ;;
+		darwin*) platform="apple-darwin" ;;
 		linux*) platform="unknown-linux-gnu" ;;
 		*) fail "Unsupported platform" ;;
 	esac
@@ -52,7 +52,7 @@ download_release() {
 	local architecture
 	case "$(uname -m)" in
 		x86_64) architecture="x86_64" ;;
-		arm64) architecture="armv7" ;;
+		arm64) architecture="x86_64" ;; # no armv64 build :(
 		*) fail "Unsupported architecture" ;;
 	esac
 
